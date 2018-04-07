@@ -18,8 +18,8 @@
           fetch('https://still-tor-28438.herokuapp.com/submissions', {
             method: 'POST',
             body: JSON.stringify({
-              name: command.split('(')[1].split(',')[0].replace(/'|"/, ''),
-              email: command.split(')')[0].split(',')[1].replace(/'|"/, ''),
+              name: command.split('(')[1].split(',')[0].replace(/'|"/g, ''),
+              email: command.split(')')[0].split(',')[1].replace(/'|"/g, ''),
             })
           })
           .then(value => this.echo('Thanks!'))
