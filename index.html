@@ -2,6 +2,16 @@
 <html>
 
 <head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-117115491-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-117115491-1');
+  </script>
+
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Map Reduce Today</title>
@@ -22,9 +32,9 @@
               email: command.split(')')[0].split(',')[1].replace(/'|"/g, '').trim(),
             })
           })
-          .then(value => this.echo("Thanks! You'll receive a confirmation email shortly."))
-          .catch(error => this.echo('Oops. There was an error signing you up. Please try again later.'))
-          
+            .then(value => this.echo("Thanks! You'll receive a confirmation email shortly."))
+            .catch(error => this.echo('Oops. There was an error signing you up. Please try again later.'))
+
         } else {
           this.echo('');
         }
@@ -84,7 +94,7 @@
           </code>
         </pre>
   </div>
-  <div id="term_demo"/>
+  <div id="term_demo" />
 </body>
 
 </html>
