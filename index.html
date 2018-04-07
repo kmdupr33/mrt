@@ -73,24 +73,23 @@
   <div class="code">
     <pre>
           <code class="language-javascript">      
-            const mapReduceToday = (essentialHackerArticles, name, emailAddress) => {
+            const mapReduceToday = (essentialHackerArticles, emailAddress, frequency = 'weekly') => {
       
               const message = essentialHackerArticles
                 .map(article => article.tldr) // includes link to original article
                 .reduce(
                   (emailMessage, currentSummary) => emailMessage + currentSummary, 
-                  `Hey ${name}!
+                  `Hey!
       
                   Your summaries of the best articles 
                   are here:
                   `
-                );
-      
-              sendEmail(emailAddress, message);
+                );              
+              setInterval(() => sendEmail(emailAddress, message), frequencyToMillis(frequency));
             };
       
             const signUp = mapReduceToday.bind(null, todaysEssentialArticles);
-            // usage: signUp('Tim', 'tim@tim.com');
+            // usage: signUp('tim@tim.com', 'weekdaily');
           </code>
         </pre>
   </div>
