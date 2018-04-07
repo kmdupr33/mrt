@@ -22,7 +22,7 @@
               email: command.split(')')[0].split(',')[1].replace(/'|"/g, '').trim(),
             })
           })
-          .then(value => this.echo('Thanks!'))
+          .then(value => this.echo("Thanks! You'll receive a confirmation email shortly."))
           .catch(error => this.echo('Oops. There was an error signing you up. Please try again later.'))
           
         } else {
