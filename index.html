@@ -24,12 +24,13 @@
   <script>
     jQuery(function ($, undefined) {
       $('#term_demo').terminal(function (command) {
-        if (command.match(/signUp\(.+,.+\)/)) {
+        const whichCommand = (command.match(/signUp\(.+,.+\)/) && 1) || (command.match(/signUp\(.+\)/) && 2) || 0
+        if (whichCommand) {
           fetch('https://still-tor-28438.herokuapp.com/submissions', {
             method: 'POST',
             body: JSON.stringify({
-              email: command.split('(')[1].split(',')[0].replace(/'|"/g, '').trim(),
-              frequency: command.split(')')[0].split(',')[1].replace(/'|"/g, '').trim(),
+              email: command.split('(')[1].split(',')[0].replace(/'|"/g, '').replace(')', '').trim(),
+              frequency: whichCommand === 1 ? command.split(')')[0].split(',')[1].replace(/'|"/g, '').trim() : 'weekly',
             })
           })
             .then(value => this.echo("Thanks! You'll receive a confirmation email shortly."))
